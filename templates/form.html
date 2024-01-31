@@ -1,0 +1,32 @@
+{{define "block" }}
+
+<div class="h5 bg-primary text-white text-center m-2 p-2">RSVP</div>
+<form method="get" action="{{if .willAttend }}/thanks{{ else }} /sorry {{ end }}" class="m-2" >
+    <div class="form-group" >
+        <label>Name</label>
+        <input class="form-control" placeholder="name" value="{{ .Name }}" />
+    </div>
+    <div class="form-group" >
+        <label>Email</label>
+        <input class="form-control" placeholder="enter Email" value="{{ .Email }}" />
+    </div>
+    <div class="form-group" >
+        <label>Tel</label>
+        <input class="form-control" placeholder="enter tel." value="{{ .Tel }}" />
+    </div>
+    <div class="form-group" >
+        <label>Will you attend?</label>
+        <select name="willAttend" class="form-select" >
+            <option {{if .willAttend }} selected {{ end }} >
+                Yes, I will be there
+            </option>
+            <option {{ if not .willAttend }} selected {{ end }}>
+                No, I wont be chanced
+            </option>
+        </select>
+    </div>
+    <a  >
+        <button class="btn btn-primary mt-3" type="submit" >submit RSVP</button>
+    </a>
+</form>
+{{ end }}
